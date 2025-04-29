@@ -11,6 +11,7 @@ export interface Member {
     gender: string
     introduction: string
     lookingFor: string
+    interests: string
     country: string
     city: string
     pothos: Potho[]
