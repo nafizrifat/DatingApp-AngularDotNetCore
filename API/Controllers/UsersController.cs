@@ -70,6 +70,7 @@ public class UsersController(IUserRepository userRepository, IMapper mapper,
             Url = result.SecureUrl.AbsoluteUri,
             PublicId = result.PublicId,
         };
+        if (user.Pothos.Count == 0) photo.IsMain = true;
 
         user.Pothos.Add(photo);
 
