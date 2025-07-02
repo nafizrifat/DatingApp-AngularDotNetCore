@@ -2,6 +2,7 @@ using System.Security.Claims;
 using API.DTOs;
 using API.Entities;
 using API.Extensions;
+using API.Helpers;
 using API.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
@@ -24,10 +25,13 @@ public class UsersController(IUserRepository userRepository, IMapper mapper,
     // }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers()
+    public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers([FromQuery] UserParams userParams)
     {
         //_context
-        var users = await userRepository.GetMemberAsync();
+        var users = await userRepository.GetMemberAsync(userParams);
+
+        Response.AddPaginationHeader(users);
+
         return Ok(users);
     }
 
