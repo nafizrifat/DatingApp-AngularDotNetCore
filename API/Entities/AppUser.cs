@@ -1,4 +1,5 @@
 using System;
+using System.Text.Json.Serialization;
 using API.Extensions;
 
 namespace API.Entities;
@@ -19,10 +20,14 @@ public class AppUser
     public string? LookingFor { get; set; }
     public string? Country { get; set; }
     public string? City { get; set; }
+     [JsonIgnore] 
     public List<Photo> Pothos { get; set; } = [];
     public List<UserLike> LikedByUsers { get; set; } = [];
     public List<UserLike> LikedUsers { get; set; } = [];
-
+    [JsonIgnore] 
+     public List<Message> MessagesSent { get; set; } = [];
+        [JsonIgnore] 
+    public List<Message> MessagesReceived { get; set; } = [];
 
 
 }
