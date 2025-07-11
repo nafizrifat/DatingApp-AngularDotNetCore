@@ -66,11 +66,6 @@ public class UserRepository (DataContext context,IMapper mapper): IUserRepositor
         .SingleOrDefaultAsync(x=>x.UserName==username);
     }
 
-    public async Task<bool> SaveAsync()
-    {
-        return await context.SaveChangesAsync()>0;
-    }
-
     public void Update(AppUser user)
     {
         context.Entry(user).State = EntityState.Modified;
